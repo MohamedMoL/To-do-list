@@ -1,29 +1,34 @@
-function remove(val) {
-    document.getElementById(val).value = "";
-}
-function finish(val) {
-    var doc = document.getElementById(val);
-    if(doc.style.textDecoration == "line-through") {
-        doc.style.textDecoration = "";
+class Task {
+    create_task() {
+        var list_item = document.createElement("li");
+        var input = document.createElement("input");
+        var remove_button = document.createElement("button");
+        var finish_button = document.createElement("button");
+        remove_button.setAttribute("class", "button");
+        remove_button.textContent = "Delete";
+        remove_button.addEventListener("click", () => {
+            input.value = "";
+        })
+        finish_button.setAttribute("class", "button");
+        finish_button.textContent = "Finish";
+        finish_button.addEventListener("click", () => {
+            if(input.style.textDecoration != "line-through") {
+                input.style.textDecoration = "line-through";
+            }
+            else {
+                input.style.textDecoration = null;
+            }
+        })
+        input.setAttribute("class", "input");
+        list_item.appendChild(input);
+        list_item.appendChild(remove_button);
+        list_item.appendChild(finish_button);
+        document.getElementById("card").insertAdjacentElement("afterbegin", list_item);
     }
-    else {
-        doc.style.textDecoration = "line-through";
-    }
 }
-function addTask() {
-    var listTask = document.createElement("li");
-    var task = document.createElement("input");
-    var removeButton = document.createElement("button");
-    var finishButton = document.createElement("button");
-    listTask.appendChild(task);
-    listTask.appendChild(removeButton);
-    listTask.appendChild(finishButton);
-    removeButton.textContent = "Delete";
-    finishButton.textContent = "Finish";
-    task.setAttribute("class", "input");
-    removeButton.setAttribute("class", "button");
-    /* removeButton.setAttribute("onclick", "remove()"); */
-    finishButton.setAttribute("class", "button");
-    /* finishButton.setAttribute("onclick", "finish()"); */
-    document.getElementById("ulTag").appendChild(listTask);
-}
+
+var newTask = document.getElementById("new-task");
+newTask.addEventListener("click", () => {
+    var task = new Task();
+    task.create_task();
+})

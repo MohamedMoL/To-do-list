@@ -5,32 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do list</title>
     <link rel="stylesheet" href="style.css">
-    <script src="inter.js"></script>
 </head>
 <body>
     <header>
         <h1>To do list</h1>
     </header>
     <main>
-        <button class="button" onclick=addTask()>New task</button>
-        <ul class="list" id="ulTag">
-            <li>
-                <input id="input1" type="text" class="input">
-                <button class="button" onclick=remove("input1")>Delete</button>
-                <button class="button" onclick=finish("input1")>Finish</button>
-            </li>
-            <li>
-                <input id="input2" type="text" class="input">
-                <button class="button" onclick=remove("input2")>Delete</button>
-                <button class="button" onclick=finish("input2")>Finish</button>
-            </li>
-            <li>
-                <input id="input3" type="text" class="input">
-                <button class="button" onclick=remove("input3")>Delete</button>
-                <button class="button" onclick=finish("input3")>Finish</button>
-            </li>
-        </ul>
+        <button class="button" id="new-task">New task</button>
+        <ul class="list" id="card"></ul>
     </main>
     <footer></footer>
 </body>
+<script src="inter.js"></script>
 </html>
